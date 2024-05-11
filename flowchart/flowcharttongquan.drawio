@@ -1,0 +1,206 @@
+<mxfile host="Electron" modified="2024-05-10T20:10:55.954Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="ip6kni9zW7LuDKLEPnb7" version="24.2.5" type="device">
+  <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
+    <mxGraphModel dx="2500" dy="956" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin: 4px 0px 0px; text-decoration: underline;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-decoration: underline;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Cập nhật&amp;nbsp; thông tin&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-decoration: underline;&quot;&gt;+Các cảm biến&lt;/p&gt;&lt;p style=&quot;margin: 4px 0px 0px; text-decoration: underline;&quot;&gt;+Real time&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="246" y="235" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Xuất các hình ảnh được thiết lập sẵn" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="246" y="126" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Xuất chữ, giờ, phút&#xa;ngày /tháng /năm" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry y="236" width="90" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Hệ thống đèn chiếu sáng tự động khi có người và điều chỉnh độ sáng để tiết kiệm điện" style="shape=process;whiteSpace=wrap;align=center;verticalAlign=middle;size=0.0475;fontStyle=1;strokeWidth=3;fillColor=#FFCCCC" parent="1" vertex="1">
+          <mxGeometry x="200.99999999999991" y="391" width="400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Thiết lập&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;Thời gian thực&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;Real-time-clock&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;Giờ / phút&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;ngày /tháng /năm&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="680" y="255" width="120" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;Xử lý thông tin&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;từ cảm biến&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;ánh sáng&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="540" y="510" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;Điều khiển&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&amp;nbsp;độ sáng&lt;/p&gt;&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;của đèn&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="188.49999999999991" y="510" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="HC-SR04&#xa;Thông tin&#xa;nhận về từ cảm &#xa;biến siêu âm" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="430" y="60" width="100" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Kết hợp Xử lý thông tin và điều khiển độ sáng của đen" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="353.5" y="660" width="96.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Điều khiển Xung PWM" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="34.99999999999997" y="524.9999999999999" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="GL5516&#xa;nhận thông tin vê từ cảm biến AS" style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" parent="1" vertex="1">
+          <mxGeometry x="550" y="650" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="" style="edgeStyle=none;noEdgeStyle=1;strokeColor=#990000;strokeWidth=2" parent="1" source="3" target="2" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="20" y="250" as="sourcePoint" />
+            <mxPoint x="120" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="edgeStyle=none;noEdgeStyle=1;strokeColor=#990000;strokeWidth=2" parent="1" source="4" target="2" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="280" y="190" as="sourcePoint" />
+            <mxPoint x="380" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin: 0px; margin-top: 4px; text-align: center; text-decoration: underline;&quot;&gt;&lt;span style=&quot;text-wrap: wrap; background-color: initial;&quot;&gt;Điều chỉnh độ sáng của đèn sao cho độ sáng môi trường xung quanh phòng ở ngưỡng 3000&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" parent="1" vertex="1">
+          <mxGeometry x="343.5" y="500" width="126.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="showzifustr()&#xa;LCD_DrawRectangle()&#xa;LCD_DrawLine()&#xa;" style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="150" y="290" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="show_picture2a()&#xa;show_picture2b()&#xa;..." style="text;spacingTop=-5;align=center" parent="1" vertex="1">
+          <mxGeometry x="200" y="190" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="330" y="325" as="sourcePoint" />
+            <mxPoint x="330" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="330" y="349" />
+              <mxPoint x="350" y="359" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="65" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=1;exitY=0.588;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="12" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="563.5" y="160" as="sourcePoint" />
+            <mxPoint x="590" y="120" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="570" y="160" />
+              <mxPoint x="580" y="120" />
+              <mxPoint x="540" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="66" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#990000;strokeWidth=2;entryX=0.618;entryY=0.011;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="ly-Iy-0F3ycbHM9XIOrk-100" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="670.5" y="110" as="sourcePoint" />
+            <mxPoint x="570" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="67" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="7" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="660.0000000000002" y="360" as="sourcePoint" />
+            <mxPoint x="711" y="110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="730" y="316" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="72" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#990000;strokeWidth=2" parent="1" source="5" target="7" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="500" y="500" as="sourcePoint" />
+            <mxPoint x="600" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="73" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#990000;strokeWidth=2" parent="1" source="7" target="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="460" y="500" as="sourcePoint" />
+            <mxPoint x="560" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="650" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="78" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="15" target="9" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="430" y="700" as="sourcePoint" />
+            <mxPoint x="530" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="81" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;exitX=0;exitY=0.75;strokeColor=#990000;strokeWidth=2" parent="1" source="9" target="13" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="420" y="730" as="sourcePoint" />
+            <mxPoint x="520" y="630" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=0.662;exitY=-0.007;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="13" target="11" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="200" y="660.0000000000002" as="sourcePoint" />
+            <mxPoint x="400" y="590" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="416" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="85" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="10" target="13" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="130.0000000000001" y="740" as="sourcePoint" />
+            <mxPoint x="230.0000000000001" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="244" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="89" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2" parent="1" source="11" target="5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="59.999999999999886" y="510" as="sourcePoint" />
+            <mxPoint x="159.9999999999999" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-100" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Hệ thống&amp;nbsp;&lt;/div&gt;&lt;div&gt;nhận biết&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;có&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;người hoạt động&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;hay không&lt;/div&gt;" style="verticalAlign=middle;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=1;fontStyle=1;strokeWidth=3;fillColor=#E6FFCC" vertex="1" parent="1">
+          <mxGeometry x="520" y="220" width="101" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-101" value="Xử lý thông tin&#xa; giữa cảm biến&#xa; và thời &#xa;gian thực " style="whiteSpace=wrap;align=center;verticalAlign=middle;fontStyle=1;strokeWidth=3;fillColor=#FFFFCC" vertex="1" parent="1">
+          <mxGeometry x="601" y="70" width="100" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-106" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#990000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="ly-Iy-0F3ycbHM9XIOrk-100">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="550" y="290" as="sourcePoint" />
+            <mxPoint x="470" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-107" value="&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;Dùng hàm trong thư viện &lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;HAL_ADC &lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;b style=&quot;font-size: 13.3333px; white-space-collapse: preserve; font-family: &amp;quot;Courier New&amp;quot;;&quot;&gt;để đọc giá trị&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="621" y="600" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-109" value="&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;Dùng bộ thư viện RTC &lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bfont%20face%3D%26quot%3BCourier%20New%26quot%3B%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bfont-size%3A%2013.3333px%3B%20white-space-collapse%3A%20preserve%3B%20background-color%3A%20rgb(212%2C%20212%2C%20212)%3B%26quot%3B%26gt%3B%26lt%3Bb%26gt%3BD%C3%B9ng%20h%C3%A0m%20trong%20th%C6%B0%20vi%E1%BB%87n%20%26lt%3B%2Fb%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Ffont%26gt%3B%26lt%3Bdiv%26gt%3B%26lt%3Bfont%20face%3D%26quot%3BCourier%20New%26quot%3B%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bfont-size%3A%2013.3333px%3B%20white-space-collapse%3A%20preserve%3B%20background-color%3A%20rgb(212%2C%20212%2C%20212)%3B%26quot%3B%26gt%3B%26lt%3Bb%26gt%3BHAL_ADC%20%26lt%3B%2Fb%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Ffont%26gt%3B%26lt%3Bb%20style%3D%26quot%3Bfont-size%3A%2013.3333px%3B%20white-space-collapse%3A%20preserve%3B%20font-family%3A%20%26amp%3Bquot%3BCourier%20New%26amp%3Bquot%3B%3B%26quot%3B%26gt%3B%C4%91%E1%BB%83%20%C4%91%E1%BB%8Dc%20gi%C3%A1%20tr%E1%BB%8B%26lt%3B%2Fb%26gt%3B%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22text%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3Bautosize%3D1%3BstrokeColor%3Dnone%3BfillColor%3Dnone%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22621%22%20y%3D%22600%22%20width%3D%22220%22%20height%3D%2250%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="740" y="391" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-111" value="&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;Sử dụng giao thức SPI&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="125" y="340" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-112" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeColor=#990000;strokeWidth=2;exitX=0.911;exitY=0.978;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ly-Iy-0F3ycbHM9XIOrk-100">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="610" y="320" as="sourcePoint" />
+            <mxPoint x="480" y="540" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="500" />
+              <mxPoint x="690" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-116" value="&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;Dùng TIMER1&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="25" y="590" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-117" value="&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;Dùng TIMER4 kết hợp đọc &lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space-collapse: preserve; background-color: rgb(212, 212, 212);&quot;&gt;&lt;b&gt;thông tin từ chân GPIO&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ly-Iy-0F3ycbHM9XIOrk-119" value="" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;strokeColor=#990000;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="14">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="130" y="560" as="sourcePoint" />
+            <mxPoint x="188.5" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="140" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
