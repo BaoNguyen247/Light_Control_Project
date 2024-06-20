@@ -1,137 +1,64 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cg9a01.h"
 #include <stdio.h>
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
 ADC_HandleTypeDef hadc1;
 RTC_HandleTypeDef hrtc;
 SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
-RTC_TimeTypeDef sTime;
+RTC_TimeTypeDef sTime;						//Khởi Tạo các biến cấu truc cần thiết cho chương trình
 RTC_DateTypeDef sDate;
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim4;
 DMA_HandleTypeDef hdma_tim1_ch3;
 #define usTIM	TIM4
-/* USER CODE BEGIN PV */
-/* USER CODE END PV */
 char time[15];
 char date[15];
-char sensor[5];
+char sensor[5];								//Khai báo các biến dùng để lưu các kí tự để xuất ra màn hình
 char timelately[3];
 char restminute[2];
 char latelyoff[2];
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
-static void MX_SPI1_Init(void);
+static void MX_SPI1_Init(void);		//Khai Báo các hàm khởi tạo
 static void MX_RTC_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_ADC1_Init(void);
 void usDelay(uint32_t uSec);
-/* USER CODE BEGIN PFP */
 uint8_t nextFiveMinutes;
-/* USER CODE END PFP */
-const float Speedofsound = 0.0343/2;
-float distance = 26;
-float distance1;
-float distance2 = 0;
+const float Speedofsound = 0.0343/2;			//Tốc độ âm thanh chia 2
+float distance = 26;				//Thời gian hiện tại
+float distance1;					//Thời gian quá khứ
+float distance2 = 0;				//Thời gian hiện tại
 char human;
 uint16_t lux = 0;
 char light[10];
 char control[5];
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
 int main(void)
 {
   uint32_t numTicks;
-  /* USER CODE BEGIN 1 */
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
   MX_ADC1_Init();
   MX_GPIO_Init();
-  MX_DMA_Init();
+  MX_DMA_Init();			//Gọi các ham khởi tạo cần thiết
   MX_SPI1_Init();
   MX_RTC_Init();
   MX_TIM4_Init();
   MX_TIM1_Init();
-  /* USER CODE BEGIN 2 */
   GC9A01_Initial();
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   ClearScreen2(WHITE);
   show_picture2a(16,0,208,60);
   show_picture2b(16,180,208,60);
   show_picture2a(16,0,208,60);
-  show_picture2b(16,180,208,60);
+  show_picture2b(16,180,208,60);						//Xuất hình ảnh, chữ của background cho lcd
   show_picture2c(20,60,40,40);
   show_picture2c(20,60,40,40);
-  showzifustr(60, 73, "NHOM 5", BLACK, WHITE);
+  showzifustr(60, 73, "NHOM 2", BLACK, WHITE);
   LCD_DrawLine(60, 88, 100, 82, RED);
   for(int i = 130; i<210; i++){
 	  LCD_DrawLine(i, 82, i, 170, CBLUE);
@@ -146,118 +73,108 @@ int main(void)
 	showzifustr(22, 120, "Time:", BLACK, WHITE);
     showzifustr(22, 135, "Onto:", BLACK, WHITE);
 	showzifustr(22, 150, "LastOff:", BLACK, WHITE);
-	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-	nextFiveMinutes = sTime.Minutes + 0b0010;
+
+	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);					//Đọc dữ liệu
 	TIM1->CCR3 = 0;
     while (1)
     {
 
      	  HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-    	  HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
-    	  sprintf(date, "%02d/%02d/20%02d",sDate.Date,sDate.Month,sDate.Year);
-    	  showzifustr(55, 105, date, BLACK, WHITE);
-    	  sprintf(time, "%02dh%02d'",sTime.Hours,sTime.Minutes);
-    	  showzifustr(55, 120, time, BLACK, WHITE);
-    	  distance1 = distance;
-
+    	  HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);			//Hàm đọc giá trị ngày va giờ
+    	  sprintf(date, "%02d/%02d/20%02d",sDate.Date,sDate.Month,sDate.Year);    //Chuyển ngày thắng năm thành kiểu dữ liệu kí tự dạng ngày/tháng/năm và lưu vào biến date
+    	  showzifustr(55, 105, date, BLACK, WHITE);					//xuất biến ra màn hình
+    	  sprintf(time, "%02dh%02d'",sTime.Hours,sTime.Minutes);		//Chuyển giờ phút thành kiểu dữ liệu kí tự dạng giờ/phút và lưu vào biến time
+    	  showzifustr(55, 120, time, BLACK, WHITE);					//xuất biến time ra màn hình
+    	  distance1 = distance;										//lưu giá trị thời gian hiện tại vào biến distance1
+    	  //1.Khối đọc dữ liệu từ cảm biến siêu âm HC-SR04
+    	  //a.Phát 1 xung 10us vào chấn Trigger để kích hoạt cảm biến siêu âm
     	  HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_RESET);
     	  usDelay(3);
     	  HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_SET);
     	  usDelay(10);
     	  HAL_GPIO_WritePin(Trigger_GPIO_Port, Trigger_Pin, GPIO_PIN_RESET);
+    	  //b.Miễn là chân Echo vẫn ở mức HIGH, cho biết xung Echo vẫn đang diễn ra thì vòng lặp này tiếp tục đếm và đặt lại biến numTicks = 0
     	  while(HAL_GPIO_ReadPin(Echo_GPIO_Port, Echo_Pin)==GPIO_PIN_RESET);
     	  numTicks = 0;
+    	  //Trong mỗi vòng lặp  thì numTicks tăng lên 1 và delay 2us
     	  while(HAL_GPIO_ReadPin(Echo_GPIO_Port, Echo_Pin)==GPIO_PIN_SET)
     	  {
     		numTicks++;
     		usDelay(2);
     	  };
-    	  distance = (numTicks + 0.0f)*2.8*Speedofsound;
+
+    	  distance = (numTicks + 0.0f)*2.8*Speedofsound; //Tính khoảng cách của vật thể bằng công thức: Khoảng cách = thời gian(1 numTicks = 2.8s) * vận tốc
+
+    	  //2.Khối xác định có người hoạt động hay không
     	  distance2 = distance;
 
-    	  if(((distance2-distance1)>=5)|(distance2<20))
+    	  if(((distance2-distance1)>=5)||(distance2<20)) //Nếu độ chênh lệch khoảng cách bây giờ so với quá khứ > 5 hoặc có một vật thể quá gần < 20 thi vào hàm if
     	  {
-    		  if (nextFiveMinutes >= 60) {
-    		      nextFiveMinutes -= 58 ;
+    		  if (nextFiveMinutes >= 60) {   //biến nextFiveMinutes thể hiện thời gian tương lai sau 5p
+    		      nextFiveMinutes -= 55 ;    //nếu số phút >= 60 thì đặt lại về 5p
     		  };
-    		  human = 1;
+    		  human = 1;                     //Xác định có người bằng cách set biến human = 1
     		  nextFiveMinutes = sTime.Minutes;
-    		  nextFiveMinutes += 0b0010;
-    		  sprintf(restminute, "%02d'",nextFiveMinutes);
+    		  nextFiveMinutes += 0b0001;     //đặt biến nextFiveMinutes thành thời gian hiện tại + 5;
+    		  sprintf(restminute, "%02d'",nextFiveMinutes);				//Tạo biến "thời gian khi đèn tắt" và xuất ra màn hình
         	  showzifustr(60, 135, restminute , BLACK, WHITE);
-    	  }else{
+    	  }else{										//Nếu ngược lại độ chênh lệch nhỏ và không có ngươi thi vao hàm else
 
-    		  if(sTime.Minutes == nextFiveMinutes){
-    		  human = 0;
-    		  sprintf(timelately, "%02dh'",sTime.Hours);
+    		  if(sTime.Minutes == nextFiveMinutes){		//Nếu "thời gian hiện tại" bằng "thời gian khi đèn tắt"
+    		  human = 0;									//Xác định không có người băng cách set biến human = 0
+    		  sprintf(timelately, "%02dh'",sTime.Hours);		//Xuất thời gian lúc đèn tắt ra màn hinh
         	  showzifustr(80, 150, timelately , BLACK, WHITE);
     		  sprintf(latelyoff, "%02d'",nextFiveMinutes);
         	  showzifustr(100, 150, latelyoff , BLACK, WHITE);
     		  };
 
     	  }
-    	  if(human == 1){
-    		  if(lux < 2900)
+    	  //3.Khối điều khiền đèn dựa trên biến human
+    	  if(human == 1){	//Nếu có người vào hàm if
+    		  if(lux < 2900) //kiểm tra độ sáng trong phòng là biến lux có nhỏ hơn 2900 không
     		  {
     			  if(TIM1->CCR3 <= 100){
-        			  TIM1->CCR3 += 5;
+        			  TIM1->CCR3 += 5;				//Nếu có thì tăng dần thanh ghi xung điều khiển đèn dần dần từ 1 -> 100%
     			  	  }
     		  }
-    		  if(lux>2950){
+    		  if(lux>2950){							//Nếu độ sáng trong phòng quá sáng > 2950 sẽ giảm độ sáng bằng cách giảm thanh ghi
     			  if(TIM1->CCR3 > 0){
         			  TIM1->CCR3 -= 5;
     			  }
-    			  if(TIM1->CCR3 == 0){
+    			  if(TIM1->CCR3 == 0){				//Nếu thanh ghi = 0 thì giữ nguyên = 0 để tranh bị lỗi giá trị
         			  TIM1->CCR3 = 0;
     			  }
     		  }
     		  if((lux>=2900)&&(lux<=2950))
     		  {
-    			  TIM1->CCR3 = TIM1->CCR3;
+    			  TIM1->CCR3 = TIM1->CCR3;			//Nếu độ sáng nằm trong khoảng  2900-2950 thì giữ nguyên độ sáng
     		  }
     		  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
     	  }
     	  else{
     		  TIM1->CCR3 = 0;
-    		  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+    		  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);	  //Nếu biến human = 0 -> không có người và đèn tắt
 
     	  }
     	      sprintf(sensor, "%.2f", distance);
-              showzifustr(150, 120, sensor , BLACK, WHITE);
-
+              showzifustr(150, 120, sensor , BLACK, WHITE);		//Xuất giá trị của cảm biến siêu âm ra màn hình
+              //KHối đọc giá tri ánh sáng lux
         	  HAL_ADC_Start(&hadc1);
         	  HAL_ADC_PollForConversion(&hadc1, 20);
-        	  lux = HAL_ADC_GetValue(&hadc1);
+        	  lux = HAL_ADC_GetValue(&hadc1); 					//Lấy giá trị ánh sáng từ cảm biến và lưu và biến lux
         	  sprintf(light, "%d (lux)", lux);
-        	  showzifustr(150, 140,light, BLACK, WHITE);
+        	  showzifustr(150, 140,light, BLACK, WHITE);		//Xuất giái trị ánh sáng ra màn hình
         	  sprintf(control, "%d", TIM1->CCR3);
-        	  showzifustr(150, 155, control, BLACK, WHITE);
+        	  showzifustr(150, 155, control, BLACK, WHITE);		//Xuất giá trị của thanh ghi xung ra màn hình
         	  HAL_Delay(1000);
-
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
 }
-
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-void SystemClock_Config(void)
+void SystemClock_Config(void)   //Hàm Khởi tạo và cấp xung hệ thống
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
-  /** Configure the main internal regulator output voltage
-  */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
-
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -273,8 +190,6 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
@@ -288,26 +203,10 @@ void SystemClock_Config(void)
   }
 }
 
-/**
-  * @brief RTC Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_ADC1_Init(void)
 {
 
-  /* USER CODE BEGIN ADC1_Init 0 */
-
-  /* USER CODE END ADC1_Init 0 */
-
   ADC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN ADC1_Init 1 */
-
-  /* USER CODE END ADC1_Init 1 */
-
-  /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
-  */
   hadc1.Instance = ADC1;
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
@@ -324,9 +223,6 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
@@ -334,10 +230,6 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN ADC1_Init 2 */
-
-  /* USER CODE END ADC1_Init 2 */
-
 }
 void usDelay(uint32_t uSec)
 {
@@ -352,19 +244,8 @@ void usDelay(uint32_t uSec)
 static void MX_RTC_Init(void)
 {
 
-  /* USER CODE BEGIN RTC_Init 0 */
-
-  /* USER CODE END RTC_Init 0 */
-
   RTC_TimeTypeDef sTime = {0};
   RTC_DateTypeDef sDate = {0};
-
-  /* USER CODE BEGIN RTC_Init 1 */
-
-  /* USER CODE END RTC_Init 1 */
-
-  /** Initialize RTC Only
-  */
   hrtc.Instance = RTC;
   hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
   hrtc.Init.AsynchPrediv = 127;
@@ -376,15 +257,8 @@ static void MX_RTC_Init(void)
   {
     Error_Handler();
   }
-
-  /* USER CODE BEGIN Check_RTC_BKUP */
-//
-  /* USER CODE END Check_RTC_BKUP */
-
-  /** Initialize RTC and set the Time and Date
-  */
-  sTime.Hours = 0x4;
-  sTime.Minutes = 0x11;
+  sTime.Hours = 0x8;
+  sTime.Minutes = 0x00;
   sTime.Seconds = 0x0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
@@ -392,37 +266,18 @@ static void MX_RTC_Init(void)
   {
     Error_Handler();
   }
-  sDate.WeekDay = RTC_WEEKDAY_TUESDAY;
-  sDate.Month = RTC_MONTH_APRIL;
-  sDate.Date = 0x23;
+  sDate.WeekDay = RTC_WEEKDAY_THURSDAY;
+  sDate.Month = RTC_MONTH_JUNE;
+  sDate.Date = 0x20;
   sDate.Year = 0x24;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN RTC_Init 2 */
-//
-  /* USER CODE END RTC_Init 2 */
-
 }
-
-/**
-  * @brief SPI1 Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_SPI1_Init(void)
 {
-
-  /* USER CODE BEGIN SPI1_Init 0 */
-
-  /* USER CODE END SPI1_Init 0 */
-
-  /* USER CODE BEGIN SPI1_Init 1 */
-
-  /* USER CODE END SPI1_Init 1 */
-  /* SPI1 parameter configuration*/
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
@@ -439,32 +294,15 @@ static void MX_SPI1_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN SPI1_Init 2 */
-
-  /* USER CODE END SPI1_Init 2 */
 
 }
 
-/**
-  * @brief TIM1 Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_TIM1_Init(void)
 {
-
-  /* USER CODE BEGIN TIM1_Init 0 */
-
-  /* USER CODE END TIM1_Init 0 */
-
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
-
-  /* USER CODE BEGIN TIM1_Init 1 */
-
-  /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 84-1;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -513,31 +351,16 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM1_Init 2 */
-
-  /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
 
 }
-
-/**
-  * @brief TIM4 Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_TIM4_Init(void)
 {
 
-  /* USER CODE BEGIN TIM4_Init 0 */
-
-  /* USER CODE END TIM4_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
-  /* USER CODE BEGIN TIM4_Init 1 */
-
-  /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 84-1;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -559,144 +382,58 @@ static void MX_TIM4_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM4_Init 2 */
-
-  /* USER CODE END TIM4_Init 2 */
-
 }
-
-/**
-  * Enable DMA controller clock
-  */
 static void MX_DMA_Init(void)
 {
 
-  /* DMA controller clock enable */
   __HAL_RCC_DMA2_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
-  /* DMA2_Stream3_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
-  /* DMA2_Stream6_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
-
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
-
-  /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, Trigger_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LCD_CS_Pin|LCD_RST_Pin|LCD_DC_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : PA1 */
-//  GPIO_InitStruct.Pin = GPIO_PIN_1;
-//  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-//  GPIO_InitStruct.Pull = GPIO_NOPULL;
-//  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-//  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LCD_CS_Pin LCD_RST_Pin LCD_DC_Pin */
   GPIO_InitStruct.Pin = LCD_CS_Pin|LCD_RST_Pin|LCD_DC_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PB10 */
-//  GPIO_InitStruct.Pin = GPIO_PIN_10;
-//  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-//  GPIO_InitStruct.Pull = GPIO_NOPULL;
-//  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-//  GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
-//  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Trigger_Pin */
   GPIO_InitStruct.Pin = Trigger_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(Trigger_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Echo_Pin */
   GPIO_InitStruct.Pin = Echo_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Echo_GPIO_Port, &GPIO_InitStruct);
-
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
 }
-
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
-
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */void Error_Handler(void)
+void Error_Handler(void)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
   {
   }
-  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
 }
 static void MX_ADC1_Init(void)
 {
-
-  /* USER CODE BEGIN ADC1_Init 0 */
-
-  /* USER CODE END ADC1_Init 0 */
-
   ADC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN ADC1_Init 1 */
-
-  /* USER CODE END ADC1_Init 1 */
-
-  /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
-  */
   hadc1.Instance = ADC1;
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
@@ -713,9 +450,6 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
   sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
@@ -723,9 +457,5 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN ADC1_Init 2 */
-
-  /* USER CODE END ADC1_Init 2 */
-
 }
-#endif /* USE_FULL_ASSERT */
+#endif
